@@ -1,0 +1,27 @@
+.car{
+	width:60px;
+	height:80px;
+}
+.spot{
+	color:red;
+	font-size:16pt;
+}
+
+.obj{
+	display: inline-block;
+	margin: 5px;
+	padding: 5px;
+}
+
+body{
+	background-color: #eee !important;
+}
+
+.panel{
+	border: 2px solid red;
+}
+
+.head{
+	font-family: Verdana;
+	color:#aaa;
+}
