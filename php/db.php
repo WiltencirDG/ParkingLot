@@ -2,26 +2,22 @@
 
 Class Db extends PDO
 {
-    private static $db;
+    public $db;
 
-    public function __construct()
+    public function __construct($dbuser = 'root', $dbpass = 'root')
     {
-        try {
-            $user = "root";
-            $pass = "root";
-            self::$db = new PDO("mysql:host=localhost;dbname=estacionamento", $user, $pass);
-
-        } catch (PDOException $e) {
-            return "Erro ao se conectar! ERROR: " . $e->getMessage();
-        }
-        return self::$db;
+        parent::__construct("mysql:host=localhost;dbname=estacionamento", $dbuser, $dbpass);
     }
 
     function initPark()
     {
-        $query = self::$db->prepare("SELECT * FROM estar");
-        $query->execute();
-        return $query->fetchAll(\PDO::FETCH_ASSOC);
+        try {
+            $query = $this->prepare("SELECT * FROM estar");
+            $query->execute();
+            return $query->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return "ERROR : " . $e->getMessage();
+        }
     }
 
 }
